@@ -7,13 +7,13 @@ public class Main {
  static void createTable(){
      char tab [][] = new char[10][10];
      System.out.println("   A B C D E F G H I J");
-     for (int row = 0;row<10;row=row +1){
+     for (int line = 0;line<10;line=line +1){
          String affichage = " ";
-         for (int col= 0;col<10;col=col+1){
-             tab [col] [row]= '~';
-                    affichage= affichage+tab [col][row] + ' ';
+         for (int column= 0;column<10;column=column+1){
+             tab [column] [line]= '~';
+                    affichage= affichage+tab [column][line] + ' ';
          }
-         System.out.println(row+" "+ affichage);
+         System.out.println(line+" "+ affichage);
      }
  }
     public static void main(String[] args) {
@@ -22,14 +22,21 @@ public class Main {
         System.out.println("Welcome to BattleShip");
         //welcome message
 
-      /*  char tableauCaractere[] = {' ', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'};
+
+        
 
 
-        for (int i = 1; i < tableauCaractere.length; i = i + 1) {
-            System.out.println("Pour l'emplacement " + i + " du tableau nous avons = " + tableauCaractere[i]);
-        }*/
 
-createTable();
+
+
+
+
+        // Gameboard creation
+
+
+
+
+        createTable();
 
 
     }
