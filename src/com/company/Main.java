@@ -9,22 +9,18 @@ public class Main {
         System.out.println("Welcome to BattleShip");
         //welcome message
 
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-=======
 
->>>>>>> master
-        char battleFieldLine0 [] =  {' ',' ',' ','A',' ','B',' ','C',' ','D',' ','E',' ','F',' ','G',' ','H',' ','I',' ','J'};
-        char battleFieldLine1 [] =  {'1',' ',' ','~',' ','~',' ','~',' ','~',' ','~',' ','~',' ','~',' ','~',' ','~',' ','~'};
-        char battleFieldLine2 [] =  {'2',' ',' ','~',' ','~',' ','~',' ','~',' ','~',' ','~',' ','~',' ','~',' ','~',' ','~'};
-        char battleFieldLine3 [] =  {'3',' ',' ','~',' ','~',' ','~',' ','~',' ','~',' ','~',' ','~',' ','~',' ','~',' ','~'};
-        char battleFieldLine4 [] =  {'4',' ',' ','~',' ','~',' ','~',' ','~',' ','~',' ','~',' ','~',' ','~',' ','~',' ','~'};
-        char battleFieldLine5 [] =  {'5',' ',' ','~',' ','~',' ','~',' ','~',' ','~',' ','~',' ','~',' ','~',' ','~',' ','~'};
-        char battleFieldLine6 [] =  {'6',' ',' ','~',' ','~',' ','~',' ','~',' ','~',' ','~',' ','~',' ','~',' ','~',' ','~'};
-        char battleFieldLine7 [] =  {'7',' ',' ','~',' ','~',' ','~',' ','~',' ','~',' ','~',' ','~',' ','~',' ','~',' ','~'};
-        char battleFieldLine8 [] =  {'8',' ',' ','~',' ','~',' ','~',' ','~',' ','~',' ','~',' ','~',' ','~',' ','~',' ','~'};
-        char battleFieldLine9 [] =  {'9',' ',' ','~',' ','~',' ','~',' ','~',' ','~',' ','~',' ','~',' ','~',' ','~',' ','~'};
-        char battleFieldLine10 [] =  {'1','0',' ','~',' ','~',' ','~',' ','~',' ','~',' ','~',' ','~',' ','~',' ','~',' ','~'};
+        char battleFieldLine0[] = {' ', ' ', ' ', 'A', ' ', 'B', ' ', 'C', ' ', 'D', ' ', 'E', ' ', 'F', ' ', 'G', ' ', 'H', ' ', 'I', ' ', 'J'};
+        char battleFieldLine1[] = {'1', ' ', ' ', '~', ' ', '~', ' ', '~', ' ', '~', ' ', '~', ' ', '~', ' ', '~', ' ', '~', ' ', '~', ' ', '~'};
+        char battleFieldLine2[] = {'2', ' ', ' ', '~', ' ', '~', ' ', '~', ' ', '~', ' ', '~', ' ', '~', ' ', '~', ' ', '~', ' ', '~', ' ', '~'};
+        char battleFieldLine3[] = {'3', ' ', ' ', '~', ' ', '~', ' ', '~', ' ', '~', ' ', '~', ' ', '~', ' ', '~', ' ', '~', ' ', '~', ' ', '~'};
+        char battleFieldLine4[] = {'4', ' ', ' ', '~', ' ', '~', ' ', '~', ' ', '~', ' ', '~', ' ', '~', ' ', '~', ' ', '~', ' ', '~', ' ', '~'};
+        char battleFieldLine5[] = {'5', ' ', ' ', '~', ' ', '~', ' ', '~', ' ', '~', ' ', '~', ' ', '~', ' ', '~', ' ', '~', ' ', '~', ' ', '~'};
+        char battleFieldLine6[] = {'6', ' ', ' ', '~', ' ', '~', ' ', '~', ' ', '~', ' ', '~', ' ', '~', ' ', '~', ' ', '~', ' ', '~', ' ', '~'};
+        char battleFieldLine7[] = {'7', ' ', ' ', '~', ' ', '~', ' ', '~', ' ', '~', ' ', '~', ' ', '~', ' ', '~', ' ', '~', ' ', '~', ' ', '~'};
+        char battleFieldLine8[] = {'8', ' ', ' ', '~', ' ', '~', ' ', '~', ' ', '~', ' ', '~', ' ', '~', ' ', '~', ' ', '~', ' ', '~', ' ', '~'};
+        char battleFieldLine9[] = {'9', ' ', ' ', '~', ' ', '~', ' ', '~', ' ', '~', ' ', '~', ' ', '~', ' ', '~', ' ', '~', ' ', '~', ' ', '~'};
+        char battleFieldLine10[] = {'1', '0', ' ', '~', ' ', '~', ' ', '~', ' ', '~', ' ', '~', ' ', '~', ' ', '~', ' ', '~', ' ', '~', ' ', '~'};
         System.out.println(battleFieldLine0);
         System.out.println(battleFieldLine1);
         System.out.println(battleFieldLine2);
@@ -38,18 +34,18 @@ public class Main {
         System.out.println(battleFieldLine10);
         // Gameboard creation
 
-        
+
 
       /*  int MyTable [] = new int[10];
         double tableauDouble[] = {0.0,1.0,2.0,3.0,4.0,5.0,6.0,7.0,8.0,9.0};
         char tableauCaractere[] = {'a','b','c','d','e','f','g'};
         System.out.println(tableauCaractere);*/
-        char tableauCaractere[] = {' ','a','b','c','d','e','f','g','h','i','j'};
+        char tableauCaractere[] = {' ', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'};
 
 
-        for(int i = 1; i < tableauCaractere.length; i=i+1)
-        {
-            System.out.println("À l'emplacement " + i +" du tableau nous avons = " + tableauCaractere[i]);
+        for (int i = 1; i < tableauCaractere.length; i = i + 1) {
+            System.out.println("À l'emplacement " + i + " du tableau nous avons = " + tableauCaractere[i]);
         }
     }
+}
 
