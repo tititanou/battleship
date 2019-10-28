@@ -36,21 +36,16 @@ public class Main {
         System.out.println(battleFieldLine8);
         System.out.println(battleFieldLine9);
         System.out.println(battleFieldLine10);
+        // Gameboard creation
 
-
-<<<<<<< HEAD
-=======
         
-    }
->>>>>>> Stashed changes
-=======
+
       /*  int MyTable [] = new int[10];
         double tableauDouble[] = {0.0,1.0,2.0,3.0,4.0,5.0,6.0,7.0,8.0,9.0};
         char tableauCaractere[] = {'a','b','c','d','e','f','g'};
         System.out.println(tableauCaractere);*/
         char tableauCaractere[] = {' ','a','b','c','d','e','f','g','h','i','j'};
 
->>>>>>> master
 
         for(int i = 1; i < tableauCaractere.length; i=i+1)
         {
@@ -58,8 +53,3 @@ public class Main {
         }
     }
 
-
-<<<<<<< HEAD
-=======
-}
->>>>>>> master
