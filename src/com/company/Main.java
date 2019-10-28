@@ -5,10 +5,11 @@ import com.sun.security.jgss.GSSUtil;
 public class Main {
 
     public static void main(String[] args) {
-	// write your code here
+        // write your code here
         System.out.println("Welcome to BattleShip");
         //welcome message
 
+<<<<<<< Updated upstream
         char battleFieldLine0 [] =  {' ',' ',' ','A',' ','B',' ','C',' ','D',' ','E',' ','F',' ','G',' ','H',' ','I',' ','J'};
         char battleFieldLine1 [] =  {'1',' ',' ','~',' ','~',' ','~',' ','~',' ','~',' ','~',' ','~',' ','~',' ','~',' ','~'};
         char battleFieldLine2 [] =  {'2',' ',' ','~',' ','~',' ','~',' ','~',' ','~',' ','~',' ','~',' ','~',' ','~',' ','~'};
@@ -33,7 +34,11 @@ public class Main {
         System.out.println(battleFieldLine10);
 
 
+=======
+        
+    }
+>>>>>>> Stashed changes
 
     }
 
-}
+
