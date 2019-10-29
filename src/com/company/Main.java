@@ -4,18 +4,14 @@ public class Main {
     // table
 
     static void initBoard(char tab[][]) {
-            //createTable
-            for (int line = 0; line < tab.length; line = line + 1) {
-                for (int column = 0; column < tab[0].length; column = column + 1) {
-                    tab[line][column]='~';
-                }
+        //createTable
+        for (int line = 0; line < tab.length; line = line + 1) {
+            for (int column = 0; column < tab[0].length; column = column + 1) {
+                tab[line][column]='~';
             }
-
-            // createShips
-
-
+        }
+        // createShips
     }
-
     static void displayBoard(char tab[][]) {
         //Display Board
         System.out.println("    A B C D E F G H I J");
@@ -35,12 +31,15 @@ public class Main {
         System.out.println("   ---------------------");
     }
 
+        System.out.println("   ---------------------");
+
+
     public static void main(String[] args) {
         // write your code here
         System.out.println("Welcome to BattleShip");
         //welcome message
 
-        char playerBoard[][]= new char[10][10];
+        char playerBoard[][] = new char[10][10];
 
         initBoard(playerBoard);
 
@@ -49,6 +48,5 @@ public class Main {
         /*test=(int) (Math.random()*6);
         System.out.println(test);
          */
-
     }
 }
