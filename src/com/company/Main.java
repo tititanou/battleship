@@ -14,22 +14,17 @@ public class Main {
             System.out.println(line+" "+ affichage);
         }
     }
-    //static void displayTable(){
-    //    System.out.println(line+" "+ affichage);
-    //}
+
     public static void main(String[] args) {
         // write your code here
         System.out.println("Welcome to BattleShip");
         //welcome message
         // Gameboard creation
         createTable();
+
         /*test=(int) (Math.random()*6);
         System.out.println(test);
          */
 
-
     }
 }
-
-
-
