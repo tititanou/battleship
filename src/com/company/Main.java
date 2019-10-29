@@ -17,6 +17,7 @@ public class Main {
     }
 
     static void displayBoard(char tab[][]) {
+        //Display Board
         System.out.println("    A B C D E F G H I J");
         System.out.println("   ---------------------");
         for (int line = 0; line < tab.length; line = line + 1) {
@@ -44,9 +45,7 @@ public class Main {
         initBoard(playerBoard);
 
         displayBoard(playerBoard);
-        // Gameboard creation
-        //createTable();
-
+        
         /*test=(int) (Math.random()*6);
         System.out.println(test);
          */
