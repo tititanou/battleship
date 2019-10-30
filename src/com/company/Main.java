@@ -24,7 +24,7 @@ public class Main {
                 row = getRandom(tab[0].length - 1);
                 col = getRandom(tab.length - N);
             } else {
-                row = getRandom(tab.length - N);
+                row = getRandom(tab[0].length - N);
                 col = getRandom(tab.length - 1);
             }
 
@@ -122,11 +122,11 @@ public class Main {
         return -1;
     }
     static void hitTheBoat (int Row, int Col, char tab [][]){
-        if(tab [Col][Row]=='#'){
-            tab [Col][Row]= 'x';
+        if(tab [Row][Col]=='#'){
+            tab [Row][Col]= 'X';
             System.out.println( " hit");
-        }else if (tab [Col] [Row]== '~'){
-            tab [Col][Row] = '°';
+        }else if (tab [Row] [Col]== '~'){
+            tab [Row][Col] = 'O';
             System.out.println("missed");
         }else{
             System.out.println("already hit");
