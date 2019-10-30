@@ -1,5 +1,8 @@
 package com.company;
 import com.sun.security.jgss.GSSUtil;
+
+import java.util.Scanner;
+
 public class Main {
     // table
 
@@ -54,17 +57,18 @@ public class Main {
     }
 
 
-        //init
-        static void initBoard ( char tab[][]){
+    //init
+    static void initBoard ( char tab[][]){
             //createTable
             for (int line = 0; line < tab.length; line = line + 1) {
                 for (int column = 0; column < tab[0].length; column = column + 1) {
                     tab[line][column] = '~';
                 }
             }
+
             // createShips
-        }
-        static void displayBoard ( char tab[][]){
+    }
+    static void displayBoard ( char tab[][]){
             //Display Board
             System.out.println("    A B C D E F G H I J");
             System.out.println("   ---------------------");
@@ -80,8 +84,54 @@ public class Main {
                 System.out.println(display);
             }
             System.out.println("   ---------------------");
+    }
+
+    // function that takes a string as a parameter and checks if the first character is between A and J
+    // if it is not the case, it returns -1
+    static int getInputColIndex(String s){
+        if(s.length() > 0){
+            char first = s.toLowerCase().charAt(0);
+            if(first >= 'a' && first <= 'j') {
+                return (first-'a');
+            }
         }
-        public static void main (String[]args){
+        return -1;
+    }
+    // function that takes a string as a parameter and checks if second and third characters are between '1' and '10'
+    // if it is not the case, it returns -1
+    static int getInputRowIndex(String s){
+        if(s.length() > 1){
+            char second = s.toLowerCase().charAt(1);
+            if(second >= '1' && second <= '9') {
+                if(s.length() > 2) {
+                    char third = s.toLowerCase().charAt(2);
+                    if (third == '0') {
+                        return Integer.parseInt(s.substring(1, 2))-1;
+                    }
+                }
+                else{
+                    return (second-'0'-1);
+                }
+            }
+        }
+        return -1;
+    }
+    static void hitTheBoat (int col, int row, char tab [][]){
+        if(tab [row][col]=='#'){
+            tab [row][col]= 'x';
+            System.out.println( " hit");
+        }else if (tab [row] [col]== '~'){
+            tab [row][col] = '°';
+            System.out.println("missed");
+        }else{
+            System.out.println("already hit");
+        }
+
+    }
+
+    static Scanner sc=new Scanner(System.in);
+
+    public static void main (String[]args){
             // write your code here
             System.out.println("Welcome to BattleShip");
             //welcome message
@@ -95,6 +145,21 @@ public class Main {
             displayBoard(playerBoard);
 
 
+        // Get input from user
+        System.out.println("Entrez des coordonnées : ");
+        String input = sc.next();
+        // get column index
+        int colIdx = getInputColIndex(input);
+        // get row index
+        int rowIdx = getInputRowIndex(input);
+        if(colIdx != -1 && rowIdx != -1){
+            // Here i got valid position for ROW and COLUMN indexes
+            // ...
+
+            hitTheBoat(colIdx,rowIdx,playerBoard);
+            displayBoard(playerBoard);
         }
+
+    }
 
 }
