@@ -111,7 +111,7 @@ public class Main {
                 if(s.length() > 2) {
                     char third = s.toLowerCase().charAt(2);
                     if (third == '0') {
-                        return Integer.parseInt(s.substring(1, 2))-1;
+                        return Integer.parseInt(s.substring(1, 3))-1;
                     }
                 }
                 else{
@@ -121,24 +121,31 @@ public class Main {
         }
         return -1;
     }
-    static void hitTheBoat (int Row, int Col, char tab [][]){
+    static boolean hitTheBoat (int Row, int Col, char tab [][]){
         if(tab [Row][Col]=='#'){
             tab [Row][Col]= 'X';
-            System.out.println( " hit");
+            System.out.println( "hit");
+            System.out.println("play again");
+            return true;
         }else if (tab [Row] [Col]== '~'){
             tab [Row][Col] = 'O';
             System.out.println("missed");
+            return false;
         }else{
             System.out.println("already hit");
+            return false;
         }
 
     }
 
 
-    static void play(char tab [][]) {
+    static boolean play(char tab [][]) {
         Scanner sc = new Scanner(System.in);
         int colIdx;
         int rowIdx;
+        boolean canPlayAgain = false;
+
+
         do {
             // Get input from user
             System.out.println("Entrez des coordonnées : ");
@@ -149,21 +156,22 @@ public class Main {
             rowIdx = getInputRowIndex(input);
             if (colIdx != -1 && rowIdx != -1) {
                 // Here I got valid position for ROW and COLUMN indexes
-                hitTheBoat(rowIdx, colIdx, tab);
+                System.out.print("PLAYER : ");
+                canPlayAgain = hitTheBoat(rowIdx, colIdx, tab);
+
             }
-        }while( colIdx==-1 || rowIdx==-1);
+        } while (colIdx == -1 || rowIdx == -1);
+        return canPlayAgain;
     }
 
-    static void cpuPlay(char tab [][]){
-        int row;
-        int col;
 
-        row = getRandom(tab[0].length-1);
-        col=getRandom(tab.length-1);
-        hitTheBoat(row,col,tab);
-
-
-
+    static boolean cpuPlay(char tab [][]){
+            int row;
+            int col;
+            row = getRandom(tab[0].length - 1);
+            col = getRandom(tab.length - 1);
+            System.out.print("CPU : ");
+            return hitTheBoat(row, col, tab);
     }
 
 
@@ -179,6 +187,23 @@ public class Main {
         // Init boards
         initBoard(playerBoard);
         initBoard(cpuBoard);
+        boolean isPlayerTurn = true;
+
+/*
+        if (play(cpuBoard)==true){
+            turn=true;
+        }
+        else {
+            turn=false;
+        }
+        if(cpuPlay(playerBoard)==true){
+            turn=false;
+        }
+        else{
+            turn=true;
+        }
+*/
+
 
         // game loop
         while(true){
@@ -187,12 +212,23 @@ public class Main {
             // display our own board
             displayBoard(playerBoard);
 
-            // the player plays
-            play(cpuBoard);
+            // Is is the player's rturn ??
+            if (isPlayerTurn == true){
+                // Yes, the player shoots and if he has missed, this is the CPU's turn now
+                if(play(cpuBoard)==false){
+                    isPlayerTurn = false;
+                }
+            }
+            else{
+                // No it is not player 's turn , it is CPU's one (isPlayerTurn is false)
+                if(cpuPlay(playerBoard)==false){
+                    isPlayerTurn=true;
+                }
 
-            // the computer plays
-            cpuPlay(playerBoard);
+            }
         }
+
+
 
 
     }
