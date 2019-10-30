@@ -189,21 +189,6 @@ public class Main {
         initBoard(cpuBoard);
         boolean isPlayerTurn = true;
 
-/*
-        if (play(cpuBoard)==true){
-            turn=true;
-        }
-        else {
-            turn=false;
-        }
-        if(cpuPlay(playerBoard)==true){
-            turn=false;
-        }
-        else{
-            turn=true;
-        }
-*/
-
 
         // game loop
         while(true){
