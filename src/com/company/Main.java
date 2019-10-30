@@ -121,12 +121,12 @@ public class Main {
         }
         return -1;
     }
-    static void hitTheBoat (int col, int row, char tab [][]){
-        if(tab [row][col]=='#'){
-            tab [row][col]= 'x';
+    static void hitTheBoat (int Row, int Col, char tab [][]){
+        if(tab [Col][Row]=='#'){
+            tab [Col][Row]= 'x';
             System.out.println( " hit");
-        }else if (tab [row] [col]== '~'){
-            tab [row][col] = '°';
+        }else if (tab [Col] [Row]== '~'){
+            tab [Col][Row] = '°';
             System.out.println("missed");
         }else{
             System.out.println("already hit");
@@ -149,7 +149,7 @@ public class Main {
             rowIdx = getInputRowIndex(input);
             if (colIdx != -1 && rowIdx != -1) {
                 // Here I got valid position for ROW and COLUMN indexes
-                hitTheBoat(colIdx, rowIdx, tab);
+                hitTheBoat(rowIdx, colIdx, tab);
             }
         }while( colIdx==-1 || rowIdx==-1);
     }
@@ -158,9 +158,9 @@ public class Main {
         int row;
         int col;
 
-        row = getRandom(9);
-        col=getRandom(9);
-        hitTheBoat(col,row,tab);
+        row = getRandom(tab[0].length-1);
+        col=getRandom(tab.length-1);
+        hitTheBoat(row,col,tab);
 
 
 
