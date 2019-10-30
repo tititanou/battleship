@@ -129,7 +129,28 @@ public class Main {
 
     }
 
-    static Scanner sc=new Scanner(System.in);
+    static Scanner sc = new Scanner(System.in);
+
+    static void play(char tab [][]) {
+
+
+        // Get input from user
+        System.out.println("Entrez des coordonnées : ");
+        String input = sc.next();
+        // get column index
+        int colIdx = getInputColIndex(input);
+        // get row index
+        int rowIdx = getInputRowIndex(input);
+        if (colIdx != -1 && rowIdx != -1) {
+            // Here I got valid position for ROW and COLUMN indexes
+            // ...
+
+            hitTheBoat(colIdx, rowIdx, tab);
+            displayBoard(tab);
+        }
+    }
+
+
 
     public static void main (String[]args){
             // write your code here
@@ -144,22 +165,8 @@ public class Main {
             creatBoat(5, playerBoard);
             displayBoard(playerBoard);
 
-
-        // Get input from user
-        System.out.println("Entrez des coordonnées : ");
-        String input = sc.next();
-        // get column index
-        int colIdx = getInputColIndex(input);
-        // get row index
-        int rowIdx = getInputRowIndex(input);
-        if(colIdx != -1 && rowIdx != -1){
-            // Here i got valid position for ROW and COLUMN indexes
-            // ...
-
-            hitTheBoat(colIdx,rowIdx,playerBoard);
-            displayBoard(playerBoard);
-        }
-
+            play(playerBoard);
     }
+
 
 }
