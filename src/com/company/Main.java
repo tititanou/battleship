@@ -59,14 +59,19 @@ public class Main {
 
     //init
     static void initBoard ( char tab[][]){
-            //createTable
-            for (int line = 0; line < tab.length; line = line + 1) {
-                for (int column = 0; column < tab[0].length; column = column + 1) {
-                    tab[line][column] = '~';
-                }
+        //createTable
+        for (int line = 0; line < tab.length; line = line + 1) {
+            for (int column = 0; column < tab[0].length; column = column + 1) {
+                tab[line][column] = '~';
             }
+        }
 
-            // createShips
+        // createShips
+        creatBoat(3, tab);
+        creatBoat(4, tab);
+        creatBoat(2, tab);
+        creatBoat(3, tab);
+        creatBoat(5, tab);
     }
     static void displayBoard ( char tab[][]){
             //Display Board
@@ -129,43 +134,67 @@ public class Main {
 
     }
 
-    static Scanner sc = new Scanner(System.in);
 
     static void play(char tab [][]) {
+        Scanner sc = new Scanner(System.in);
+        int colIdx;
+        int rowIdx;
+        do {
+            // Get input from user
+            System.out.println("Entrez des coordonnées : ");
+            String input = sc.next();
+            // get column index
+            colIdx = getInputColIndex(input);
+            // get row index
+            rowIdx = getInputRowIndex(input);
+            if (colIdx != -1 && rowIdx != -1) {
+                // Here I got valid position for ROW and COLUMN indexes
+                hitTheBoat(colIdx, rowIdx, tab);
+            }
+        }while( colIdx==-1 || rowIdx==-1);
+    }
+
+    static void cpuPlay(char tab [][]){
+        int row;
+        int col;
+
+        row = getRandom(9);
+        col=getRandom(9);
+        hitTheBoat(col,row,tab);
 
 
-        // Get input from user
-        System.out.println("Entrez des coordonnées : ");
-        String input = sc.next();
-        // get column index
-        int colIdx = getInputColIndex(input);
-        // get row index
-        int rowIdx = getInputRowIndex(input);
-        if (colIdx != -1 && rowIdx != -1) {
-            // Here I got valid position for ROW and COLUMN indexes
-            // ...
 
-            hitTheBoat(colIdx, rowIdx, tab);
-            displayBoard(tab);
-        }
     }
 
 
 
     public static void main (String[]args){
-            // write your code here
-            System.out.println("Welcome to BattleShip");
-            //welcome message
-            char playerBoard[][] = new char[10][10];
-            initBoard(playerBoard);
-            creatBoat(3, playerBoard);
-            creatBoat(4, playerBoard);
-            creatBoat(2, playerBoard);
-            creatBoat(3, playerBoard);
-            creatBoat(5, playerBoard);
+        //welcome message
+        System.out.println("Welcome to BattleShip");
+
+        //create boards
+        char playerBoard[][] = new char[10][10];
+        char cpuBoard [][]= new char[10][10];
+
+        // Init boards
+        initBoard(playerBoard);
+        initBoard(cpuBoard);
+
+        // game loop
+        while(true){
+            // Display the board of the enemy
+            displayBoard(cpuBoard);
+            // display our own board
             displayBoard(playerBoard);
 
-            play(playerBoard);
+            // the player plays
+            play(cpuBoard);
+
+            // the computer plays
+            cpuPlay(playerBoard);
+        }
+
+
     }
 
 
