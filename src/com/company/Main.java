@@ -174,49 +174,94 @@ public class Main {
             return hitTheBoat(row, col, tab);
     }
 
+    static boolean allShipsDestroyed(char tab[][]){
+        boolean is0ship=true;
+        int row;
+        int col;
+        for (col=0;col<tab.length;col++){
+            for (row=0;row<tab[0].length;row++){
+                if(tab[row][col]=='#'){
+                    is0ship=false;
+                }
+           }
+        }
+        return is0ship;
+    }
+
+
 
 
     public static void main (String[]args){
         //welcome message
         System.out.println("Welcome to BattleShip");
 
-        //create boards
-        char playerBoard[][] = new char[10][10];
-        char cpuBoard [][]= new char[10][10];
 
-        // Init boards
-        initBoard(playerBoard);
-        initBoard(cpuBoard);
-        boolean isPlayerTurn = true;
+            //create boards
+            char playerBoard[][] = new char[10][10];
+            char cpuBoard[][] = new char[10][10];
+
+            // Init boards
+            initBoard(playerBoard);
+            initBoard(cpuBoard);
+            boolean isPlayerTurn = true;
 
 
-        // game loop
-        while(true){
-            // Display the board of the enemy
-            displayBoard(cpuBoard);
-            // display our own board
-            displayBoard(playerBoard);
+            // game loop
+            while (true) {
+                // Display the board of the enemy
+                displayBoard(cpuBoard);
+                // display our own board
+                displayBoard(playerBoard);
 
-            // Is is the player's rturn ??
-            if (isPlayerTurn == true){
-                // Yes, the player shoots and if he has missed, this is the CPU's turn now
-                if(play(cpuBoard)==false){
-                    isPlayerTurn = false;
+                // Is is the player's rturn ??
+                if (isPlayerTurn == true) {
+                    // Yes, the player shoots and if he has missed, this is the CPU's turn now
+                    if (play(cpuBoard) == false) {
+                        isPlayerTurn = false;
+                    }
+                } else {
+                    // No it is not player 's turn , it is CPU's one (isPlayerTurn is false)
+                    if (cpuPlay(playerBoard) == false) {
+                        isPlayerTurn = true;
+                    }
                 }
-            }
-            else{
-                // No it is not player 's turn , it is CPU's one (isPlayerTurn is false)
-                if(cpuPlay(playerBoard)==false){
-                    isPlayerTurn=true;
+                boolean hasPlayerWon= allShipsDestroyed(cpuBoard);
+
+                boolean hasCPUWon= allShipsDestroyed(playerBoard);
+
+                if (hasPlayerWon==true) {
+                    System.out.println("YOU WIN");
+                }
+                else if (hasCPUWon==true) {
+                    System.out.println("CPU WINS");
+                }
+
+                if  (hasCPUWon||hasPlayerWon) {
+                    do {
+                        System.out.println("Do you want to play again? Yes/No");
+                        String input = sc.next();
+                        String response = input.toLowerCase();
+                        if (response == "yes") {
+
+                        } else if (response == "no") {
+                            System.out.println(Game is finished !);
+                            break;
+                        }
+                    } while (response != "yes" && response != "no") ;
+
                 }
 
             }
+
+
         }
-
-
-
-
     }
 
 
 }
+/*if (allShipsDestroyed(cpuBoard) == true) {
+                        System.out.println(Player has won);
+
+                    }
+
+ */
