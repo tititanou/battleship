@@ -80,7 +80,7 @@ public class Main {
         for (int line = 0; line < tab.length; line = line + 1) {
             String display = " ";
             for (int column = 0; column < tab[0].length; column = column + 1) {
-                if (hiddenMode==true && tab[line][column] == '#') {
+                if (hiddenMode==true && tab[line][column] == '#') {                         //hidden mode to hide the boats on the CPU's board
                     display = display + '~' + " ";
                 }
                 else {
@@ -127,19 +127,19 @@ public class Main {
         return -1;
     }
 
-    static boolean hitTheBoat(int Row, int Col, char tab[][]) {
+    static boolean hitTheBoat(int Row, int Col, char tab[][]) {                 //function to shoot
         if (tab[Row][Col] == '#') {
             tab[Row][Col] = 'X';
             System.out.println("hit");
             System.out.println("play again");
-            return true;
+            return true;                                                       // if player hits a boat, he can plays again
         } else if (tab[Row][Col] == '~') {
             tab[Row][Col] = 'O';
             System.out.println("missed");
-            return false;
+            return false;                                                       // if player miss his shoot, it's CPU's turn
         } else {
             System.out.println("already hit");
-            return false;
+            return false;                                                       // if the position of shoot is already hit, Player or CPU can replays
         }
 
     }
@@ -152,7 +152,7 @@ public class Main {
         boolean canPlayAgain = false;
 
 
-        do {
+        do {                                                                    // Ask a position to shoot
             // Get input from user
             System.out.println("Entrez des coordonnées : ");
             String input = sc.next();
@@ -171,7 +171,7 @@ public class Main {
     }
 
 
-    static boolean cpuPlay(char tab[][]) {
+    static boolean cpuPlay(char tab[][]) {                                      //Get a random shooting position from CPU
         int row;
         int col;
         row = getRandom(tab[0].length - 1);
@@ -180,7 +180,7 @@ public class Main {
         return hitTheBoat(row, col, tab);
     }
 
-    static boolean allShipsDestroyed(char tab[][]) {
+    static boolean allShipsDestroyed(char tab[][]) {                            //Check if every parts of boats are destroyed
         boolean is0ship = true;
         int row;
         int col;
@@ -195,15 +195,15 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        //welcome message
+                                                                                    //welcome message
         System.out.println("Welcome to BattleShip");
 
 
-        //create boards
+                                                                                    //create boards of player, and CPU
         char playerBoard[][] = new char[10][10];
         char cpuBoard[][] = new char[10][10];
 
-        // Init boards
+                                                                                    // Init boards of player and CPU
         initBoard(playerBoard);
         initBoard(cpuBoard);
         boolean isPlayerTurn = true;
@@ -212,22 +212,22 @@ public class Main {
 
 
 
-        // game loop
+                                                                                    // game loop
         while (isPlaying) {
-            // Display the board of the enemy
+                                                                                    // Display the board of the enemy
             displayBoard(cpuBoard,true);
-            // display our own board
+                                                                                    // display our own board
             displayBoard(playerBoard,false);
 
 
-            // Is is the player's rturn ??
+                                                                                    // Is is the player's return ??
             if (isPlayerTurn == true) {
-                // Yes, the player shoots and if he has missed, this is the CPU's turn now
+                                                                        // Yes, the player shoots and if he has missed, this is the CPU's turn now
                 if (play(cpuBoard) == false) {
                     isPlayerTurn = false;
                 }
             } else {
-                // No it is not player 's turn , it is CPU's one (isPlayerTurn is false)
+                                                                        // No it is not player 's turn , it is CPU's one (isPlayerTurn is false)
                 if (cpuPlay(playerBoard) == false) {
                     isPlayerTurn = true;
                 }
@@ -242,14 +242,14 @@ public class Main {
                 System.out.println("CPU WINS");
             }
 
-            if (hasCPUWon || hasPlayerWon) {
+            if (hasCPUWon || hasPlayerWon) {                            // Ask if the player wants to play again
                 do {
                     System.out.println("Do you want to play again? Yes/No");
                     Scanner sc = new Scanner(System.in);
                     String input = sc.next();
                     String response = input.toLowerCase();
 
-                    if (response.equals("yes")) {
+                    if (response.equals("yes")) {                       // write "yes" make game restart
                         validResponse=true;
                         isPlayerTurn=true;
                         initBoard(playerBoard);
@@ -257,7 +257,7 @@ public class Main {
 
 
 
-                    } else if (response.equals("no")) {
+                    } else if (response.equals("no")) {                 // write "no" make game finish
                         validResponse=true;
                         isPlaying =false;
                         System.out.println("Game is finished !");
@@ -265,7 +265,7 @@ public class Main {
                     }
 
                     else{
-                        validResponse=false;
+                        validResponse=false;                            // if player writes a wrong word, ask again if play wants to play again
                     }
 
 
