@@ -4,32 +4,30 @@ import com.sun.security.jgss.GSSUtil;
 import java.util.Scanner;
 
 public class Main {
-    // table
 
-    static int getRandom(int MAX) {  //
-        return (int) (Math.random() * (MAX + 1));
+    static int getRandom(int MAX) {
+        return (int) (Math.random() * (MAX + 1));      //fonction to generate a random integer between 0 et max
     }
 
-    static void creatBoat(int N, char tab[][]) {
+    static void creatBoat(int N, char tab[][]) {         //fonction to create a boat
 
-        boolean shipNotOk;
+        boolean shipNotOk;                               //variable to know if we can create a boat
 
 
         do {
             // ALEA
-            int hv = getRandom(1);
+            int hv = getRandom(1);                  // variable to draw by lot if vertical or horizontal
             int row;
             int col;
-            // random pos orient
             if (hv == 0) {
-                row = getRandom(tab[0].length - 1);
-                col = getRandom(tab.length - N);
+                row = getRandom(tab[0].length - 1);     //variable to generate a random position on raw for the boat's 1st case
+                col = getRandom(tab.length - N);        //variable to generate a random position on column for the boat's 1st case
             } else {
                 row = getRandom(tab[0].length - N);
                 col = getRandom(tab.length - 1);
             }
 
-            shipNotOk = false;
+            shipNotOk = false;                                  //checking if there is already another boat
             // CHECK
 
             for (int position = 0; position < N; position++) {
@@ -45,7 +43,7 @@ public class Main {
             }
 
             // WRITE
-            if (shipNotOk == false) {
+            if (shipNotOk == false) {                                   //there is no boat so I can create a boat
                 for (int position = 0; position < N; position++) {
                     if (hv == 0) {
                         tab[row][col + position] = '#';
@@ -59,8 +57,8 @@ public class Main {
 
 
     //init
-    static void initBoard(char tab[][]) {
-        //createTable
+    static void initBoard(char tab[][]) {                                           //generate a new game board
+                                                                                    //createTable
         for (int line = 0; line < tab.length; line = line + 1) {
             for (int column = 0; column < tab[0].length; column = column + 1) {
                 tab[line][column] = '~';
@@ -75,14 +73,19 @@ public class Main {
         creatBoat(5, tab);
     }
 
-    static void displayBoard(char tab[][]) {
+    static void displayBoard(char tab[][],boolean hiddenMode) {
         //Display Board
         System.out.println("    A B C D E F G H I J");
         System.out.println("   ---------------------");
         for (int line = 0; line < tab.length; line = line + 1) {
             String display = " ";
             for (int column = 0; column < tab[0].length; column = column + 1) {
-                display = display + tab[line][column] + " ";
+                if (hiddenMode==true && tab[line][column] == '#') {
+                    display = display + '~' + " ";
+                }
+                else {
+                    display = display + tab[line][column] + " ";
+                }
             }
             display = (line + 1) + "|" + display + "|";
             if (line < tab.length - 1) {
@@ -212,9 +215,9 @@ public class Main {
         // game loop
         while (isPlaying) {
             // Display the board of the enemy
-            displayBoard(cpuBoard);
+            displayBoard(cpuBoard,true);
             // display our own board
-            displayBoard(playerBoard);
+            displayBoard(playerBoard,false);
 
 
             // Is is the player's rturn ??
